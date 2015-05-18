@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SISREHMED_WSService WSDL service -->
+
+  <service name="SISREHMED_WS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices.control"/>
+      <parameter name="wsdlServiceElement" value="SISREHMED_WSService"/>
+      <parameter name="schemaQualified" value="http://webservices.control"/>
+      <parameter name="wsdlServicePort" value="SISREHMED_WS"/>
+      <parameter name="className" value="control.webservices.SISREHMED_WS"/>
+      <parameter name="wsdlPortType" value="SISREHMED_WS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webservices.control" xmlns:retNS="http://webservices.control" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraAPSPorEspecialidad" qname="operNS:buscarHoraAPSPorEspecialidad" returnQName="retNS:buscarHoraAPSPorEspecialidadReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservices.control" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idEspecialidad" type="tns:int"/>
+        <parameter xmlns:pns="http://webservices.control" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaIn" type="tns:string"/>
+        <parameter xmlns:pns="http://webservices.control" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaFin" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webservices.control" xmlns:retNS="http://webservices.control" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerEspecialidades" qname="operNS:obtenerEspecialidades" returnQName="retNS:obtenerEspecialidadesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://webservices.control" xmlns:retNS="http://webservices.control" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="obtenerTodosLosMedicos" qname="operNS:obtenerTodosLosMedicos" returnQName="retNS:obtenerTodosLosMedicosReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://webservices.control" xmlns:retNS="http://webservices.control" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="buscarHoraAPSPorMedico" qname="operNS:buscarHoraAPSPorMedico" returnQName="retNS:buscarHoraAPSPorMedicoReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservices.control" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:idMedico" type="tns:int"/>
+        <parameter xmlns:pns="http://webservices.control" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaIn" type="tns:string"/>
+        <parameter xmlns:pns="http://webservices.control" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:fechaFin" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad"/>
+
+  </service>
+</deployment>

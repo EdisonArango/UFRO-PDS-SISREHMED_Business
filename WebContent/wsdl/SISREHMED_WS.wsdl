@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices.control" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices.control" xmlns:intf="http://webservices.control" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices.control" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="buscarHoraAPSPorEspecialidad">
+    <complexType>
+     <sequence>
+      <element name="idEspecialidad" type="xsd:int"/>
+      <element name="fechaIn" type="xsd:string"/>
+      <element name="fechaFin" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarHoraAPSPorEspecialidadResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarHoraAPSPorEspecialidadReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerEspecialidades">
+    <complexType/>
+   </element>
+   <element name="obtenerEspecialidadesResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerEspecialidadesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerTodosLosMedicos">
+    <complexType/>
+   </element>
+   <element name="obtenerTodosLosMedicosResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerTodosLosMedicosReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarHoraAPSPorMedico">
+    <complexType>
+     <sequence>
+      <element name="idMedico" type="xsd:int"/>
+      <element name="fechaIn" type="xsd:string"/>
+      <element name="fechaFin" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarHoraAPSPorMedicoResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarHoraAPSPorMedicoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="buscarHoraAPSPorMedicoResponse">
+
+      <wsdl:part element="impl:buscarHoraAPSPorMedicoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarHoraAPSPorMedicoRequest">
+
+      <wsdl:part element="impl:buscarHoraAPSPorMedico" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTodosLosMedicosResponse">
+
+      <wsdl:part element="impl:obtenerTodosLosMedicosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerEspecialidadesRequest">
+
+      <wsdl:part element="impl:obtenerEspecialidades" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTodosLosMedicosRequest">
+
+      <wsdl:part element="impl:obtenerTodosLosMedicos" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarHoraAPSPorEspecialidadRequest">
+
+      <wsdl:part element="impl:buscarHoraAPSPorEspecialidad" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarHoraAPSPorEspecialidadResponse">
+
+      <wsdl:part element="impl:buscarHoraAPSPorEspecialidadResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerEspecialidadesResponse">
+
+      <wsdl:part element="impl:obtenerEspecialidadesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SISREHMED_WS">
+
+      <wsdl:operation name="buscarHoraAPSPorEspecialidad">
+
+         <wsdl:input message="impl:buscarHoraAPSPorEspecialidadRequest" name="buscarHoraAPSPorEspecialidadRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarHoraAPSPorEspecialidadResponse" name="buscarHoraAPSPorEspecialidadResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEspecialidades">
+
+         <wsdl:input message="impl:obtenerEspecialidadesRequest" name="obtenerEspecialidadesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerEspecialidadesResponse" name="obtenerEspecialidadesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTodosLosMedicos">
+
+         <wsdl:input message="impl:obtenerTodosLosMedicosRequest" name="obtenerTodosLosMedicosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerTodosLosMedicosResponse" name="obtenerTodosLosMedicosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarHoraAPSPorMedico">
+
+         <wsdl:input message="impl:buscarHoraAPSPorMedicoRequest" name="buscarHoraAPSPorMedicoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarHoraAPSPorMedicoResponse" name="buscarHoraAPSPorMedicoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SISREHMED_WSSoapBinding" type="impl:SISREHMED_WS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="buscarHoraAPSPorEspecialidad">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarHoraAPSPorEspecialidadRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarHoraAPSPorEspecialidadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEspecialidades">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerEspecialidadesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerEspecialidadesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTodosLosMedicos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerTodosLosMedicosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerTodosLosMedicosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarHoraAPSPorMedico">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarHoraAPSPorMedicoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarHoraAPSPorMedicoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SISREHMED_WSService">
+
+      <wsdl:port binding="impl:SISREHMED_WSSoapBinding" name="SISREHMED_WS">
+
+         <wsdlsoap:address location="http://localhost:8080/SISREHMED-Business/services/SISREHMED_WS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
