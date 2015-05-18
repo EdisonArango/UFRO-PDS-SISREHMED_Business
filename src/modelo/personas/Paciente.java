@@ -1,6 +1,12 @@
 package modelo.personas;
 
+import java.util.ArrayList;
+
+import modelo.hospital.HoraMedica;
+
 import org.orm.PersistentException;
+
+import control.util.Utilidades;
 
 public class Paciente extends Persona {
 	private int id;
@@ -28,6 +34,34 @@ public class Paciente extends Persona {
 		}
 		return true;
 	}
+	
+	public int numeroDeReservas (String fechaIn,String fechaFin) throws PersistentException{
+		modelo.orm.Reserva[] reservas = modelo.orm.ReservaDAO.listReservaByQuery("idPaciente="+id, null);
+		HoraMedica[] horasDePaciente = new HoraMedica[reservas.length];
+		for (int i = 0; i < horasDePaciente.length; i++) {
+			horasDePaciente[i] = HoraMedica.horaMedicaORMAHoraMedica(reservas[i].getHoraMedica());
+		}
+		
+		ArrayList<String> fechasRango = Utilidades.diasDeRango(fechaIn, fechaFin);
+		int cantidadReservasEnRango = 0;
+		for (String fechaActual : fechasRango) {
+			for (HoraMedica horaMedica : horasDePaciente) {
+				if (fechaActual.equals(horaMedica.getFecha())){
+					cantidadReservasEnRango++;
+				}
+			}
+		}
+		return cantidadReservasEnRango;
+	}
+	
+    public static Paciente[] obtenerTodosLosPacientes() throws PersistentException{
+        modelo.orm.Paciente[] pacientesORM = modelo.orm.PacienteDAO.listPacienteByQuery(null, null);
+        Paciente[] pacientes = new Paciente[pacientesORM.length];
+        for (int i = 0; i < pacientesORM.length; i++) {
+            pacientes[i] = Paciente.pacienteORMAPaciente(pacientesORM[i]);
+        }
+        return pacientes;
+    }
 	
 	public modelo.orm.Paciente pacienteAORM() throws PersistentException{
 		return modelo.orm.PacienteDAO.loadPacienteByQuery("id="+id,null);

@@ -77,12 +77,4 @@ public class Reserva {
 		return horasLibresEspecialidad;
 	}
         
-//        public static void main(String[] args) throws PersistentException {
-//            Reserva reserva = new Reserva();
-//            ArrayList<HoraMedica> horasRes = reserva.buscarHorasAPSPorMedico(1,"11/05/2015","15/05/2015");
-//            
-//            for (int i = 0; i < horasRes.size(); i++) {
-//                System.out.println(horasRes.get(i).getId()+": "+horasRes.get(i).getFecha()+","+horasRes.get(i).getHora());
-//            }
-//        }
 }

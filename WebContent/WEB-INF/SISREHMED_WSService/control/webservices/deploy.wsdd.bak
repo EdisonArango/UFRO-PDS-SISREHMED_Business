@@ -20,11 +20,6 @@
       <parameter name="className" value="control.webservices.SISREHMED_WSSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="SISREHMED_WS"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="buscarHoraAPSPorEspecialidad" qname="operNS:buscarHoraAPSPorEspecialidad" xmlns:operNS="http://webservices.control" returnQName="retNS:buscarHoraAPSPorEspecialidadReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
-        <parameter qname="pns:idEspecialidad" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
       <operation name="obtenerEspecialidades" qname="operNS:obtenerEspecialidades" xmlns:operNS="http://webservices.control" returnQName="retNS:obtenerEspecialidadesReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
       </operation>
       <operation name="obtenerTodosLosMedicos" qname="operNS:obtenerTodosLosMedicos" xmlns:operNS="http://webservices.control" returnQName="retNS:obtenerTodosLosMedicosReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
@@ -34,7 +29,40 @@
         <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad"/>
+      <operation name="buscarHoraAPSPorEspecialidad" qname="operNS:buscarHoraAPSPorEspecialidad" xmlns:operNS="http://webservices.control" returnQName="retNS:buscarHoraAPSPorEspecialidadReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idEspecialidad" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="reservarHoraAPS" qname="operNS:reservarHoraAPS" xmlns:operNS="http://webservices.control" returnQName="retNS:reservarHoraAPSReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idHoraMedica" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:idPaciente" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="reservarHoraControl" qname="operNS:reservarHoraControl" xmlns:operNS="http://webservices.control" returnQName="retNS:reservarHoraControlReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idshorasMedicas" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:idPaciente" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="obtenerBoxes" qname="operNS:obtenerBoxes" xmlns:operNS="http://webservices.control" returnQName="retNS:obtenerBoxesReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <operation name="obtenerPorcentajeOcupacionBox" qname="operNS:obtenerPorcentajeOcupacionBox" xmlns:operNS="http://webservices.control" returnQName="retNS:obtenerPorcentajeOcupacionBoxReturn" xmlns:retNS="http://webservices.control" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idBox" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="obtenerPorcentajeOcupacionMedico" qname="operNS:obtenerPorcentajeOcupacionMedico" xmlns:operNS="http://webservices.control" returnQName="retNS:obtenerPorcentajeOcupacionMedicoReturn" xmlns:retNS="http://webservices.control" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idMedico" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="obtenerMedicosMasSolicitados" qname="operNS:obtenerMedicosMasSolicitados" xmlns:operNS="http://webservices.control" returnQName="retNS:obtenerMedicosMasSolicitadosReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="obtenerPacientesQueMasReservan" qname="operNS:obtenerPacientesQueMasReservan" xmlns:operNS="http://webservices.control" returnQName="retNS:obtenerPacientesQueMasReservanReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerPorcentajeOcupacionMedico obtenerMedicosMasSolicitados obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad reservarHoraControl obtenerBoxes obtenerPacientesQueMasReservan obtenerPorcentajeOcupacionBox reservarHoraAPS"/>
 
   </service>
 </deployment>

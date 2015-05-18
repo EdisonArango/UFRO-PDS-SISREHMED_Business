@@ -40,6 +40,21 @@ public class PruebasJunit {
 	}
 	
 	@Test
+	public void testWSMedicosMasSolicitados() {
+		String respuesta = new SISREHMED_WS().obtenerMedicosMasSolicitados("10/04/2015", "10/06/2015");
+		System.out.println(respuesta);
+		assertTrue(respuesta!=null);
+	}
+	
+	@Test
+	public void testWSPacientesQueMasReservan() {
+		String respuesta = new SISREHMED_WS().obtenerPacientesQueMasReservan("10/04/2015", "10/06/2015");
+		System.out.println(respuesta);
+		assertTrue(respuesta!=null);
+	}
+	
+	
+	@Test
 	public void testReservaNoEsAPS() throws PersistentException{
 		String respuesta = Reserva.reservarHoraAPS(9, 1);
 		assertTrue (respuesta=="Hora no es APS");

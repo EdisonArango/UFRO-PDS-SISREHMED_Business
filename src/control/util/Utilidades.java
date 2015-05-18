@@ -6,6 +6,9 @@
 package control.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+
 import modelo.hospital.HoraMedica;
 
 /**
@@ -67,5 +70,69 @@ public class Utilidades {
             }
             return fechas;
         }
+    
+    /**
+     * Ordena los objetos de mayor a menor 
+     * @param objetos Objetos a ordenar
+     * @param cantidades Cantidades a ordenar tal que a objetos[i] le corresponda cantidades[i]
+     * @return Hashmap con los 10 objetos con mayor valores ordenados y sus respectivas cantidades asociadas
+     */
+    public static LinkedHashMap<Object,Integer> ordenarObjetosDeMayorAMenor (Object[] objetos, int[] cantidades){
+    	ArrayList<Object> objetosOrdenados = new ArrayList<>();
+    	ArrayList<Integer> cantidadesOrdenadas = new ArrayList<>();
+    	for (int i = 0; i < objetos.length; i++) {
+			if(objetosOrdenados.isEmpty()){
+				objetosOrdenados.add(objetos[i]);
+				cantidadesOrdenadas.add(cantidades[i]);
+			}
+			else{
+				for (int j = 0; j < objetosOrdenados.size(); j++) {
+					if (objetosOrdenados.size()==1||j==objetosOrdenados.size()-1){
+						if (cantidades[i]>cantidadesOrdenadas.get(j)){
+							objetosOrdenados.add(j,objetos[i]);
+							cantidadesOrdenadas.add(j,cantidades[i]);
+							break;
+						}
+						else{
+							objetosOrdenados.add(objetos[i]);
+							cantidadesOrdenadas.add(cantidades[i]);
+							break;
+						}
+					}
+					else {
+						if(cantidades[i]<=cantidadesOrdenadas.get(j)&&cantidades[i]>=cantidadesOrdenadas.get(j+1)){
+							objetosOrdenados.add(j+1,objetos[i]);
+							cantidadesOrdenadas.add(j+1,cantidades[i]);
+							break;
+						}
+					}
+					
+				}
+			}
+		}
+    	LinkedHashMap<Object,Integer> map = new LinkedHashMap<Object,Integer>();
+    	int max = 10;
+    	if (objetosOrdenados.size()<10){
+    		max=objetosOrdenados.size();
+    	}
+    	for (int i = 0; i < max; i++) {
+			map.put(objetosOrdenados.get(i),cantidadesOrdenadas.get(i));
+		}
+    	return map;
+    }
+    
+    public static void main(String[] args) {
+		String[] valores = {"Edison","Felipe","Pepe","Carlos"};
+		int[] cantidades = {0,4,1,2};
+		
+		LinkedHashMap<Object,Integer> map = Utilidades.ordenarObjetosDeMayorAMenor(valores, cantidades);
+		
+		Iterator<Object> keySetIterator = map.keySet().iterator();
+
+		while(keySetIterator.hasNext()){
+		  Object key = keySetIterator.next();
+		  System.out.println("key: " + (String)key + " value: " + map.get(key));
+		}
+	}
     
 }

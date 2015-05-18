@@ -41,6 +41,27 @@ public class Medico extends Persona {
 	    	return HoraMedica.obtenerHorasMedicasDeMedico(this, fechaIn, fechaFin);
 	    }
         
+		public int numeroDeReservas (String fechaIn, String fechaFin) throws PersistentException{
+			ArrayList<HoraMedica> horasMedicas = obtenerHorasMedicas(fechaIn, fechaFin);
+			int totalHorasReservadas = 0;
+			for (int i = 0; i < horasMedicas.size(); i++) {
+				if (horasMedicas.get(i).horaReservada()) {
+					totalHorasReservadas++;
+				}
+			}
+			return totalHorasReservadas;
+		}
+		
+		public int numeroDeReservas (ArrayList<HoraMedica> horasMedicas ,String fechaIn, String fechaFin){
+			int totalHorasReservadas = 0;
+			for (int i = 0; i < horasMedicas.size(); i++) {
+				if (horasMedicas.get(i).horaReservada()) {
+					totalHorasReservadas++;
+				}
+			}
+			return totalHorasReservadas;
+		}
+		
         public static Medico cargarMedicoPorId(int id) throws PersistentException{
             modelo.orm.Medico medicoORM = modelo.orm.MedicoDAO.loadMedicoByQuery("id="+id, null);
             return medicoORMAMedico(medicoORM);

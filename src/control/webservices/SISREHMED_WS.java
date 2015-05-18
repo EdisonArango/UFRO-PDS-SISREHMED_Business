@@ -1,15 +1,17 @@
 package control.webservices;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 import modelo.hospital.Box;
 import modelo.hospital.Especialidad;
 import modelo.hospital.HoraMedica;
 import modelo.personas.Medico;
+import modelo.personas.Paciente;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.orm.PersistentException;
 
 import control.servicios.Reporte;
 import control.servicios.Reserva;
@@ -176,7 +178,7 @@ public class SISREHMED_WS {
 	public int obtenerPorcentajeOcupacionBox (int idBox,String fechaIn, String fechaFin){
 		try {
 			return Reporte.obtenerPorcentajeOcupacionDeBox(idBox, fechaIn, fechaFin);
-		} catch (PersistentException e) {
+		} catch (Exception e) {
 			return -1;
 		}
 	}
@@ -184,8 +186,52 @@ public class SISREHMED_WS {
 	public int obtenerPorcentajeOcupacionMedico (int idMedico,String fechaIn, String fechaFin){
 		try {
 			return Reporte.obtenerPorcentajeOcupacionDeMedico(idMedico, fechaIn, fechaFin);
-		} catch (PersistentException e) {
+		} catch (Exception e) {
 			return -1;
+		}
+	}
+	
+	public String obtenerMedicosMasSolicitados (String fechaIn,String fechaFin){
+		try {
+			LinkedHashMap<Object,Integer> mapaMedicos = Reporte.obtenerMedicosMasSolicitados(fechaIn, fechaFin);
+			Iterator<Object> keySetIterator = mapaMedicos.keySet().iterator();
+			JSONObject jo;
+			JSONArray array = new JSONArray();
+			while(keySetIterator.hasNext()){
+				Object medico = keySetIterator.next();
+				jo=new JSONObject();
+				jo.put("id", ((Medico)medico).getId());
+				jo.put("nombre", ((Medico)medico).getNombre());
+				jo.put("cantidad", mapaMedicos.get(medico));
+				array.add(jo);
+			}
+			JSONObject joResult = new JSONObject();
+			joResult.put("medicos", array);
+			return joResult.toJSONString();
+		} catch (Exception e) {
+			return "Error";
+		}
+	}
+	
+	public String obtenerPacientesQueMasReservan (String fechaIn,String fechaFin){
+		try {
+			LinkedHashMap<Object,Integer> mapaPacientes = Reporte.obtenerPacientesQueMasReservan(fechaIn, fechaFin);
+			Iterator<Object> keySetIterator = mapaPacientes.keySet().iterator();
+			JSONObject jo;
+			JSONArray array = new JSONArray();
+			while(keySetIterator.hasNext()){
+				Object paciente = keySetIterator.next();
+				jo=new JSONObject();
+				jo.put("id", ((Paciente)paciente).getId());
+				jo.put("nombre", ((Paciente)paciente).getNombre());
+				jo.put("cantidad", mapaPacientes.get(paciente));
+				array.add(jo);
+			}
+			JSONObject joResult = new JSONObject();
+			joResult.put("pacientes", array);
+			return joResult.toJSONString();
+		} catch (Exception e) {
+			return "Error";
 		}
 	}
 

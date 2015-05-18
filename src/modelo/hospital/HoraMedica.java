@@ -108,7 +108,6 @@ public class HoraMedica {
 		return horasMedicasRes;
 	}
         
-        
 	public static HoraMedica horaMedicaORMAHoraMedica(modelo.orm.HoraMedica horaMedicaORM) throws PersistentException{
 		modelo.orm.Reserva reserva = obtenerReserva(horaMedicaORM.getId());
 		int idReserva = -1;
@@ -155,19 +154,6 @@ public class HoraMedica {
         public Box getBox() {
             return box;
         }
-        
-        
-        
-//        public static void main(String[] args) throws PersistentException {
-//            HoraMedica horaMedica = new HoraMedica();
-//            ArrayList<String> horas = horaMedica.diasDeRango("04/05/2015", "14/06/2016");
-//            
-//            for (int i = 0; i < horas.size(); i++) {
-//                System.out.println(horas.get(i));
-//            }
-            
-//            HoraMedica.obtenerReserva(1);
-//        }
         
         
 }
