@@ -56,6 +56,22 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="buscarSusHorasMedicas">
+    <complexType>
+     <sequence>
+      <element name="idMedico" type="xsd:int"/>
+      <element name="fechaIn" type="xsd:string"/>
+      <element name="fechaFin" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarSusHorasMedicasResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarSusHorasMedicasReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="reservarHoraAPS">
     <complexType>
      <sequence>
@@ -177,6 +193,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="buscarSusHorasMedicasResponse">
+
+      <wsdl:part element="impl:buscarSusHorasMedicasResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:message name="reservarHoraAPSRequest">
 
       <wsdl:part element="impl:reservarHoraAPS" name="parameters">
@@ -252,6 +276,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="obtenerTodosLosMedicosResponse">
 
       <wsdl:part element="impl:obtenerTodosLosMedicosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarSusHorasMedicasRequest">
+
+      <wsdl:part element="impl:buscarSusHorasMedicas" name="parameters">
 
       </wsdl:part>
 
@@ -382,6 +414,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:buscarHoraAPSPorEspecialidadResponse" name="buscarHoraAPSPorEspecialidadResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarSusHorasMedicas">
+
+         <wsdl:input message="impl:buscarSusHorasMedicasRequest" name="buscarSusHorasMedicasRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarSusHorasMedicasResponse" name="buscarSusHorasMedicasResponse">
 
        </wsdl:output>
 
@@ -542,6 +586,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="buscarHoraAPSPorEspecialidadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarSusHorasMedicas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarSusHorasMedicasRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarSusHorasMedicasResponse">
 
             <wsdlsoap:body use="literal"/>
 

@@ -76,5 +76,10 @@ public class Reserva {
 		}
 		return horasLibresEspecialidad;
 	}
+	
+	public static ArrayList<HoraMedica> buscarSusHorasMedicas (int idMedico,String fechaIn,String fechaFin) throws PersistentException{
+		Medico medico = Medico.cargarMedicoPorId(idMedico);
+		return medico.obtenerHorasMedicas(fechaIn, fechaFin);
+	}
         
 }

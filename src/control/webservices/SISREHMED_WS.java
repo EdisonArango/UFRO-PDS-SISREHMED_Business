@@ -59,7 +59,7 @@ public class SISREHMED_WS {
 		for (int i = 0; i < medicos.length; i++) {
 			jo=new JSONObject();
 			jo.put("id", medicos[i].getId());
-			jo.put("nombre", medicos[i].getNombre());
+			jo.put("nombre", medicos[i].getNombre()+" "+medicos[i].getApellido());
 			array.add(jo);
 		}
 		JSONObject joResult = new JSONObject();
@@ -81,7 +81,6 @@ public class SISREHMED_WS {
 			jo=new JSONObject();
 			jo.put("id", horasEncontradas.get(i).getId());
 			jo.put("fecha", horasEncontradas.get(i).getFecha());
-			System.out.println(jo.get("fecha"));
 			jo.put("hora", horasEncontradas.get(i).getHora());
 			jo.put("box", horasEncontradas.get(i).getBox().getNombre());
 			array.add(jo);
@@ -108,6 +107,42 @@ public class SISREHMED_WS {
 			jo.put("hora", horasEncontradas.get(i).getHora());
 			jo.put("medico", horasEncontradas.get(i).medico.getNombre()+" "+horasEncontradas.get(i).medico.getApellido());
 			jo.put("box", horasEncontradas.get(i).getBox().getNombre());
+			array.add(jo);
+		}
+		JSONObject joResult = new JSONObject();
+		joResult.put("horasEncontradas", array);
+		return joResult.toJSONString();
+	}
+	
+	public String buscarSusHorasMedicas (int idMedico, String fechaIn, String fechaFin) {
+		ArrayList<HoraMedica> horasEncontradas = new ArrayList<>();
+		try {
+			horasEncontradas = Reserva.buscarSusHorasMedicas(idMedico, fechaIn, fechaFin);
+		} catch (Exception e) {
+			return "Error";
+		}
+		
+		JSONObject jo;
+		JSONArray array = new JSONArray();
+		for (int i = 0; i < horasEncontradas.size(); i++) {
+			jo=new JSONObject();
+			jo.put("id", horasEncontradas.get(i).getId());
+			jo.put("fecha", horasEncontradas.get(i).getFecha());
+			jo.put("hora", horasEncontradas.get(i).getHora());
+			jo.put("box", horasEncontradas.get(i).getBox().getNombre());
+			if(horasEncontradas.get(i).horaReservada()){
+				jo.put("reservado", "si");
+				jo.put("paciente", horasEncontradas.get(i).paciente.getNombre()+" "+horasEncontradas.get(i).paciente.getApellido());
+			}
+			else{
+				jo.put("reservado", "no");
+			}
+			if(horasEncontradas.get(i).horaEsAPS()){
+				jo.put("tipo", "APS");
+			}
+			else{
+				jo.put("tipo", "Control");
+			}
 			array.add(jo);
 		}
 		JSONObject joResult = new JSONObject();
@@ -201,7 +236,7 @@ public class SISREHMED_WS {
 				Object medico = keySetIterator.next();
 				jo=new JSONObject();
 				jo.put("id", ((Medico)medico).getId());
-				jo.put("nombre", ((Medico)medico).getNombre());
+				jo.put("nombre", ((Medico)medico).getNombre()+" "+((Medico)medico).getApellido());
 				jo.put("cantidad", mapaMedicos.get(medico));
 				array.add(jo);
 			}
@@ -223,13 +258,29 @@ public class SISREHMED_WS {
 				Object paciente = keySetIterator.next();
 				jo=new JSONObject();
 				jo.put("id", ((Paciente)paciente).getId());
-				jo.put("nombre", ((Paciente)paciente).getNombre());
+				jo.put("nombre", ((Paciente)paciente).getNombre()+" "+((Paciente)paciente).getApellido());
 				jo.put("cantidad", mapaPacientes.get(paciente));
 				array.add(jo);
 			}
 			JSONObject joResult = new JSONObject();
 			joResult.put("pacientes", array);
 			return joResult.toJSONString();
+		} catch (Exception e) {
+			return "Error";
+		}
+	}
+	
+	public String obtenerNombreDeMedico (int idMedico){
+		try {
+			return Medico.cargarMedicoPorId(idMedico).getNombre()+" "+Medico.cargarMedicoPorId(idMedico).getNombre();
+		} catch (Exception e) {
+			return "Error";
+		}
+	}
+	
+	public String obtenerNombreDeBox (int idBox){
+		try {
+			return Box.cargarBoxPorId(idBox).getNombre();
 		} catch (Exception e) {
 			return "Error";
 		}

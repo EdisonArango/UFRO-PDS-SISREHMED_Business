@@ -34,6 +34,11 @@
         <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
+      <operation name="buscarSusHorasMedicas" qname="operNS:buscarSusHorasMedicas" xmlns:operNS="http://webservices.control" returnQName="retNS:buscarSusHorasMedicasReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idMedico" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
       <operation name="reservarHoraAPS" qname="operNS:reservarHoraAPS" xmlns:operNS="http://webservices.control" returnQName="retNS:reservarHoraAPSReturn" xmlns:retNS="http://webservices.control" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:idHoraMedica" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:idPaciente" xmlns:pns="http://webservices.control" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
@@ -62,7 +67,7 @@
         <parameter qname="pns:fechaIn" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:fechaFin" xmlns:pns="http://webservices.control" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerPorcentajeOcupacionMedico obtenerMedicosMasSolicitados obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad reservarHoraControl obtenerBoxes obtenerPacientesQueMasReservan obtenerPorcentajeOcupacionBox reservarHoraAPS"/>
+      <parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerPorcentajeOcupacionMedico obtenerMedicosMasSolicitados buscarSusHorasMedicas obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad reservarHoraControl obtenerBoxes obtenerPacientesQueMasReservan obtenerPorcentajeOcupacionBox reservarHoraAPS"/>
 
   </service>
 </deployment>

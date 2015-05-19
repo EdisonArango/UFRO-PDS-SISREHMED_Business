@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -45,34 +45,39 @@
    <ns1:parameter qname="ns4:fechaIn" type="xsd:string"/>
    <ns1:parameter qname="ns4:fechaFin" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="reservarHoraAPS" qname="ns5:reservarHoraAPS" returnQName="ns5:reservarHoraAPSReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns5:idHoraMedica" type="xsd:int"/>
-   <ns1:parameter qname="ns5:idPaciente" type="xsd:int"/>
+  <ns1:operation name="buscarSusHorasMedicas" qname="ns5:buscarSusHorasMedicas" returnQName="ns5:buscarSusHorasMedicasReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:idMedico" type="xsd:int"/>
+   <ns1:parameter qname="ns5:fechaIn" type="xsd:string"/>
+   <ns1:parameter qname="ns5:fechaFin" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="reservarHoraControl" qname="ns6:reservarHoraControl" returnQName="ns6:reservarHoraControlReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns6:idshorasMedicas" type="xsd:string"/>
+  <ns1:operation name="reservarHoraAPS" qname="ns6:reservarHoraAPS" returnQName="ns6:reservarHoraAPSReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:idHoraMedica" type="xsd:int"/>
    <ns1:parameter qname="ns6:idPaciente" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="obtenerBoxes" qname="ns7:obtenerBoxes" returnQName="ns7:obtenerBoxesReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
-  <ns1:operation name="obtenerPorcentajeOcupacionBox" qname="ns8:obtenerPorcentajeOcupacionBox" returnQName="ns8:obtenerPorcentajeOcupacionBoxReturn" returnType="xsd:int" soapAction="" xmlns:ns8="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns8:idBox" type="xsd:int"/>
-   <ns1:parameter qname="ns8:fechaIn" type="xsd:string"/>
-   <ns1:parameter qname="ns8:fechaFin" type="xsd:string"/>
+  <ns1:operation name="reservarHoraControl" qname="ns7:reservarHoraControl" returnQName="ns7:reservarHoraControlReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:idshorasMedicas" type="xsd:string"/>
+   <ns1:parameter qname="ns7:idPaciente" type="xsd:int"/>
   </ns1:operation>
-  <ns1:operation name="obtenerPorcentajeOcupacionMedico" qname="ns9:obtenerPorcentajeOcupacionMedico" returnQName="ns9:obtenerPorcentajeOcupacionMedicoReturn" returnType="xsd:int" soapAction="" xmlns:ns9="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-   <ns1:parameter qname="ns9:idMedico" type="xsd:int"/>
+  <ns1:operation name="obtenerBoxes" qname="ns8:obtenerBoxes" returnQName="ns8:obtenerBoxesReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:operation name="obtenerPorcentajeOcupacionBox" qname="ns9:obtenerPorcentajeOcupacionBox" returnQName="ns9:obtenerPorcentajeOcupacionBoxReturn" returnType="xsd:int" soapAction="" xmlns:ns9="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:idBox" type="xsd:int"/>
    <ns1:parameter qname="ns9:fechaIn" type="xsd:string"/>
    <ns1:parameter qname="ns9:fechaFin" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="obtenerMedicosMasSolicitados" qname="ns10:obtenerMedicosMasSolicitados" returnQName="ns10:obtenerMedicosMasSolicitadosReturn" returnType="xsd:string" soapAction="" xmlns:ns10="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="obtenerPorcentajeOcupacionMedico" qname="ns10:obtenerPorcentajeOcupacionMedico" returnQName="ns10:obtenerPorcentajeOcupacionMedicoReturn" returnType="xsd:int" soapAction="" xmlns:ns10="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns10:idMedico" type="xsd:int"/>
    <ns1:parameter qname="ns10:fechaIn" type="xsd:string"/>
    <ns1:parameter qname="ns10:fechaFin" type="xsd:string"/>
   </ns1:operation>
-  <ns1:operation name="obtenerPacientesQueMasReservan" qname="ns11:obtenerPacientesQueMasReservan" returnQName="ns11:obtenerPacientesQueMasReservanReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ns1:operation name="obtenerMedicosMasSolicitados" qname="ns11:obtenerMedicosMasSolicitados" returnQName="ns11:obtenerMedicosMasSolicitadosReturn" returnType="xsd:string" soapAction="" xmlns:ns11="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns11:fechaIn" type="xsd:string"/>
    <ns1:parameter qname="ns11:fechaFin" type="xsd:string"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerPorcentajeOcupacionMedico obtenerMedicosMasSolicitados obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad reservarHoraControl obtenerBoxes obtenerPacientesQueMasReservan obtenerPorcentajeOcupacionBox reservarHoraAPS"/>
+  <ns1:operation name="obtenerPacientesQueMasReservan" qname="ns12:obtenerPacientesQueMasReservan" returnQName="ns12:obtenerPacientesQueMasReservanReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:fechaIn" type="xsd:string"/>
+   <ns1:parameter qname="ns12:fechaFin" type="xsd:string"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerPorcentajeOcupacionMedico obtenerMedicosMasSolicitados buscarSusHorasMedicas obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad reservarHoraControl obtenerBoxes obtenerPacientesQueMasReservan obtenerPorcentajeOcupacionBox reservarHoraAPS"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="SISREHMED_WS"/>
   <ns1:parameter name="className" value="control.webservices.SISREHMED_WS"/>
