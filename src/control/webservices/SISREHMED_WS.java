@@ -272,7 +272,8 @@ public class SISREHMED_WS {
 	
 	public String obtenerNombreDeMedico (int idMedico){
 		try {
-			return Medico.cargarMedicoPorId(idMedico).getNombre()+" "+Medico.cargarMedicoPorId(idMedico).getNombre();
+			Medico medico = Medico.cargarMedicoPorId(idMedico);
+			return medico.getNombre()+" "+medico.getApellido();
 		} catch (Exception e) {
 			return "Error";
 		}

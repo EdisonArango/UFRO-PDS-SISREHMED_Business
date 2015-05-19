@@ -7,8 +7,8 @@
   <ns1:parameter name="dotNetSoapEncFix" value="true"/>
   <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
   <ns1:parameter name="sendXMLDeclaration" value="true"/>
-  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
   <ns1:requestFlow>
    <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
     <ns1:parameter name="scope" value="session"/>
@@ -77,7 +77,13 @@
    <ns1:parameter qname="ns12:fechaIn" type="xsd:string"/>
    <ns1:parameter qname="ns12:fechaFin" type="xsd:string"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="obtenerEspecialidades buscarHoraAPSPorMedico obtenerPorcentajeOcupacionMedico obtenerMedicosMasSolicitados buscarSusHorasMedicas obtenerTodosLosMedicos buscarHoraAPSPorEspecialidad reservarHoraControl obtenerBoxes obtenerPacientesQueMasReservan obtenerPorcentajeOcupacionBox reservarHoraAPS"/>
+  <ns1:operation name="obtenerNombreDeMedico" qname="ns13:obtenerNombreDeMedico" returnQName="ns13:obtenerNombreDeMedicoReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:idMedico" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:operation name="obtenerNombreDeBox" qname="ns14:obtenerNombreDeBox" returnQName="ns14:obtenerNombreDeBoxReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://webservices.control" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns14:idBox" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="buscarHoraAPSPorMedico buscarSusHorasMedicas buscarHoraAPSPorEspecialidad reservarHoraControl obtenerBoxes obtenerPacientesQueMasReservan obtenerEspecialidades obtenerPorcentajeOcupacionMedico obtenerNombreDeMedico obtenerMedicosMasSolicitados obtenerTodosLosMedicos obtenerPorcentajeOcupacionBox reservarHoraAPS obtenerNombreDeBox"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="SISREHMED_WS"/>
   <ns1:parameter name="className" value="control.webservices.SISREHMED_WS"/>

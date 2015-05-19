@@ -174,24 +174,36 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="obtenerNombreDeMedico">
+    <complexType>
+     <sequence>
+      <element name="idMedico" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerNombreDeMedicoResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerNombreDeMedicoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerNombreDeBox">
+    <complexType>
+     <sequence>
+      <element name="idBox" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerNombreDeBoxResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerNombreDeBoxReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
-
-   <wsdl:message name="buscarHoraAPSPorMedicoRequest">
-
-      <wsdl:part element="impl:buscarHoraAPSPorMedico" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="obtenerPacientesQueMasReservanResponse">
-
-      <wsdl:part element="impl:obtenerPacientesQueMasReservanResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
 
    <wsdl:message name="buscarSusHorasMedicasResponse">
 
@@ -204,22 +216,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="reservarHoraAPSRequest">
 
       <wsdl:part element="impl:reservarHoraAPS" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="reservarHoraControlResponse">
-
-      <wsdl:part element="impl:reservarHoraControlResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="obtenerPorcentajeOcupacionMedicoResponse">
-
-      <wsdl:part element="impl:obtenerPorcentajeOcupacionMedicoResponse" name="parameters">
 
       </wsdl:part>
 
@@ -241,17 +237,113 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="obtenerMedicosMasSolicitadosResponse">
+   <wsdl:message name="reservarHoraAPSResponse">
 
-      <wsdl:part element="impl:obtenerMedicosMasSolicitadosResponse" name="parameters">
+      <wsdl:part element="impl:reservarHoraAPSResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="reservarHoraAPSResponse">
+   <wsdl:message name="obtenerPacientesQueMasReservanRequest">
 
-      <wsdl:part element="impl:reservarHoraAPSResponse" name="parameters">
+      <wsdl:part element="impl:obtenerPacientesQueMasReservan" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerPorcentajeOcupacionBoxResponse">
+
+      <wsdl:part element="impl:obtenerPorcentajeOcupacionBoxResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerBoxesRequest">
+
+      <wsdl:part element="impl:obtenerBoxes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="reservarHoraControlRequest">
+
+      <wsdl:part element="impl:reservarHoraControl" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerNombreDeMedicoResponse">
+
+      <wsdl:part element="impl:obtenerNombreDeMedicoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerNombreDeBoxRequest">
+
+      <wsdl:part element="impl:obtenerNombreDeBox" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarHoraAPSPorEspecialidadRequest">
+
+      <wsdl:part element="impl:buscarHoraAPSPorEspecialidad" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarHoraAPSPorMedicoRequest">
+
+      <wsdl:part element="impl:buscarHoraAPSPorMedico" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerPacientesQueMasReservanResponse">
+
+      <wsdl:part element="impl:obtenerPacientesQueMasReservanResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="reservarHoraControlResponse">
+
+      <wsdl:part element="impl:reservarHoraControlResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerPorcentajeOcupacionMedicoResponse">
+
+      <wsdl:part element="impl:obtenerPorcentajeOcupacionMedicoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerNombreDeBoxResponse">
+
+      <wsdl:part element="impl:obtenerNombreDeBoxResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerMedicosMasSolicitadosResponse">
+
+      <wsdl:part element="impl:obtenerMedicosMasSolicitadosResponse" name="parameters">
 
       </wsdl:part>
 
@@ -265,9 +357,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="obtenerPacientesQueMasReservanRequest">
+   <wsdl:message name="obtenerNombreDeMedicoRequest">
 
-      <wsdl:part element="impl:obtenerPacientesQueMasReservan" name="parameters">
+      <wsdl:part element="impl:obtenerNombreDeMedico" name="parameters">
 
       </wsdl:part>
 
@@ -289,25 +381,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="obtenerPorcentajeOcupacionBoxResponse">
-
-      <wsdl:part element="impl:obtenerPorcentajeOcupacionBoxResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="obtenerPorcentajeOcupacionMedicoRequest">
 
       <wsdl:part element="impl:obtenerPorcentajeOcupacionMedico" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="obtenerBoxesRequest">
-
-      <wsdl:part element="impl:obtenerBoxes" name="parameters">
 
       </wsdl:part>
 
@@ -329,25 +405,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="reservarHoraControlRequest">
-
-      <wsdl:part element="impl:reservarHoraControl" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="obtenerEspecialidadesResponse">
 
       <wsdl:part element="impl:obtenerEspecialidadesResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="buscarHoraAPSPorEspecialidadRequest">
-
-      <wsdl:part element="impl:buscarHoraAPSPorEspecialidad" name="parameters">
 
       </wsdl:part>
 
@@ -510,6 +570,30 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:obtenerPacientesQueMasReservanResponse" name="obtenerPacientesQueMasReservanResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerNombreDeMedico">
+
+         <wsdl:input message="impl:obtenerNombreDeMedicoRequest" name="obtenerNombreDeMedicoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerNombreDeMedicoResponse" name="obtenerNombreDeMedicoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerNombreDeBox">
+
+         <wsdl:input message="impl:obtenerNombreDeBoxRequest" name="obtenerNombreDeBoxRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerNombreDeBoxResponse" name="obtenerNombreDeBoxResponse">
 
        </wsdl:output>
 
@@ -730,6 +814,42 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="obtenerPacientesQueMasReservanResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerNombreDeMedico">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerNombreDeMedicoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerNombreDeMedicoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerNombreDeBox">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerNombreDeBoxRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerNombreDeBoxResponse">
 
             <wsdlsoap:body use="literal"/>
 
