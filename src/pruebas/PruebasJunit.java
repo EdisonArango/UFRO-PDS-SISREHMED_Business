@@ -53,37 +53,37 @@ public class PruebasJunit {
 		assertTrue(respuesta!=null);
 	}
 	
-	
-	@Test
-	public void testReservaNoEsAPS() throws PersistentException{
-		String respuesta = Reserva.reservarHoraAPS(9, 1);
-		assertTrue (respuesta=="Hora no es APS");
-	}
-	
-	@Test
-	public void testReservaAPSPacienteYaLaReservo() throws PersistentException{
-		String respuesta = Reserva.reservarHoraAPS(10, 1);
-		assertTrue (respuesta=="Paciente ya ha reservado la hora");
-	}
-	
-	@Test
-	public void testReservaAPSYaEstaReservada() throws PersistentException{
-		String respuesta = Reserva.reservarHoraAPS(11, 2);
-		assertTrue (respuesta=="La hora ya esta reservada");
-	}
-	
-	@Test
-	public void testReservaAPSPacienteConTopon() throws PersistentException{
-		String respuesta = Reserva.reservarHoraAPS(12, 1);
-		assertTrue (respuesta=="Paciente no esta libre en hora a reservar");
-	}
-	
-	@Test
-	public void testReservaAPSReservaCorrecta() throws PersistentException{
-		String respuesta = Reserva.reservarHoraAPS(8, 2);
-		System.out.println(respuesta);
-		assertTrue (Utilidades.isNumeric(respuesta));
-	}
+//	
+//	@Test
+//	public void testReservaNoEsAPS() throws PersistentException{
+//		String respuesta = Reserva.reservarHoraAPS(9, 1);
+//		assertTrue (respuesta=="Hora no es APS");
+//	}
+//	
+//	@Test
+//	public void testReservaAPSPacienteYaLaReservo() throws PersistentException{
+//		String respuesta = Reserva.reservarHoraAPS(10, 1);
+//		assertTrue (respuesta=="Paciente ya ha reservado la hora");
+//	}
+//	
+//	@Test
+//	public void testReservaAPSYaEstaReservada() throws PersistentException{
+//		String respuesta = Reserva.reservarHoraAPS(11, 2);
+//		assertTrue (respuesta=="La hora ya esta reservada");
+//	}
+//	
+//	@Test
+//	public void testReservaAPSPacienteConTopon() throws PersistentException{
+//		String respuesta = Reserva.reservarHoraAPS(12, 1);
+//		assertTrue (respuesta=="Paciente no esta libre en hora a reservar");
+//	}
+//	
+//	@Test
+//	public void testReservaAPSReservaCorrecta() throws PersistentException{
+//		String respuesta = Reserva.reservarHoraAPS(8, 2);
+//		System.out.println(respuesta);
+//		assertTrue (Utilidades.isNumeric(respuesta));
+//	}
 	
 	@Test
 	public void testReservaControlReservaCorrecta() throws PersistentException{

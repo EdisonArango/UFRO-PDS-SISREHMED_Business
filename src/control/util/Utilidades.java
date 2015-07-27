@@ -52,7 +52,7 @@ public class Utilidades {
             añoActual = Integer.valueOf(fechaActual.split("/")[2]);
             fechas.add(fechaActual);
             while (!fechaActual.equals(fechaFin)) {                
-                if (diaActual==31) {
+                if (diaActual>=31) {
                     diaActual=1;
                     if (mesActual==12) {
                         mesActual=1;

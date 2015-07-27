@@ -11,8 +11,11 @@ import org.orm.PersistentException;
 
 public class Reserva {
 
-	public static String reservarHoraAPS(int idHoraMedica, int idPaciente) throws PersistentException {
+	public static String reservarHoraAPS(int idHoraMedica, int idPaciente,String clave) throws PersistentException {
 		Paciente paciente = Paciente.cargarPacientePorId(idPaciente);
+		if(!paciente.getPass().equals(clave)){
+			return "Clave incorrecta";
+		}
 		HoraMedica horaMedica = HoraMedica.cargarHoraMedicaPorId(idHoraMedica);
 		if (!horaMedica.horaEsAPS()){
 			return "Hora no es APS";

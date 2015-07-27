@@ -67,6 +67,26 @@ public class SISREHMED_WS {
 		return joResult.toJSONString();
 	}
 	
+	public String obtenerTodosLosPacientes(){
+		Paciente[] pacientes = new Paciente[0];
+		try {
+			pacientes = Paciente.obtenerTodosLosPacientes();
+		} catch (Exception e) {
+			return "Error";
+		}
+		JSONObject jo;
+		JSONArray array = new JSONArray();
+		for (int i = 0; i < pacientes.length; i++) {
+			jo=new JSONObject();
+			jo.put("id", pacientes[i].getId());
+			jo.put("nombre", pacientes[i].getNombre()+" "+pacientes[i].getApellido());
+			array.add(jo);
+		}
+		JSONObject joResult = new JSONObject();
+		joResult.put("pacientes", array);
+		return joResult.toJSONString();
+	}
+	
 	public String buscarHoraAPSPorMedico (int idMedico, String fechaIn, String fechaFin) {
 		ArrayList<HoraMedica> horasEncontradas = new ArrayList<>();
 		try {
@@ -150,10 +170,10 @@ public class SISREHMED_WS {
 		return joResult.toJSONString();
 	}
 	
-	public String reservarHoraAPS (int idHoraMedica,int idPaciente){
+	public String reservarHoraAPS (int idHoraMedica,int idPaciente,String clave){
 		String respuesta;
 		try {
-			respuesta = Reserva.reservarHoraAPS(idHoraMedica, idPaciente);
+			respuesta = Reserva.reservarHoraAPS(idHoraMedica, idPaciente,clave);
 			return respuesta;
 		} catch (Exception e) {
 			return "Error";
@@ -286,5 +306,21 @@ public class SISREHMED_WS {
 			return "Error";
 		}
 	}
+	
+//	public String registrarPaciente (){
+//		
+//	}
+//	
+//	public String crearCupo (){
+//		
+//	}
+//	
+//	public String eliminarCupo (){
+//		
+//	}
+//	
+//	public String modificarCupo (){
+//		
+//	}
 
 }

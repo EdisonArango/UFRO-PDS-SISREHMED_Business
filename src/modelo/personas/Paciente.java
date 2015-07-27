@@ -20,6 +20,11 @@ public class Paciente extends Persona {
 //		return 
 //	}
 	
+    @Override
+    public int getId(){
+    	return id;
+    }
+    
 	public static Paciente cargarPacientePorId(int id) throws PersistentException{
         modelo.orm.Paciente pacienteORM = modelo.orm.PacienteDAO.loadPacienteByQuery("id="+id, null);
         return pacienteORMAPaciente(pacienteORM);

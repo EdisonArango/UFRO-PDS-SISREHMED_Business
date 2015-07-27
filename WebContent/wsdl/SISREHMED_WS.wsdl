@@ -4,42 +4,6 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://webservices.control" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="obtenerEspecialidades">
-    <complexType/>
-   </element>
-   <element name="obtenerEspecialidadesResponse">
-    <complexType>
-     <sequence>
-      <element name="obtenerEspecialidadesReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="obtenerTodosLosMedicos">
-    <complexType/>
-   </element>
-   <element name="obtenerTodosLosMedicosResponse">
-    <complexType>
-     <sequence>
-      <element name="obtenerTodosLosMedicosReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="buscarHoraAPSPorMedico">
-    <complexType>
-     <sequence>
-      <element name="idMedico" type="xsd:int"/>
-      <element name="fechaIn" type="xsd:string"/>
-      <element name="fechaFin" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="buscarHoraAPSPorMedicoResponse">
-    <complexType>
-     <sequence>
-      <element name="buscarHoraAPSPorMedicoReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="buscarHoraAPSPorEspecialidad">
     <complexType>
      <sequence>
@@ -53,62 +17,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="buscarHoraAPSPorEspecialidadReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="buscarSusHorasMedicas">
-    <complexType>
-     <sequence>
-      <element name="idMedico" type="xsd:int"/>
-      <element name="fechaIn" type="xsd:string"/>
-      <element name="fechaFin" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="buscarSusHorasMedicasResponse">
-    <complexType>
-     <sequence>
-      <element name="buscarSusHorasMedicasReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="reservarHoraAPS">
-    <complexType>
-     <sequence>
-      <element name="idHoraMedica" type="xsd:int"/>
-      <element name="idPaciente" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="reservarHoraAPSResponse">
-    <complexType>
-     <sequence>
-      <element name="reservarHoraAPSReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="reservarHoraControl">
-    <complexType>
-     <sequence>
-      <element name="idshorasMedicas" type="xsd:string"/>
-      <element name="idPaciente" type="xsd:int"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="reservarHoraControlResponse">
-    <complexType>
-     <sequence>
-      <element name="reservarHoraControlReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="obtenerBoxes">
-    <complexType/>
-   </element>
-   <element name="obtenerBoxesResponse">
-    <complexType>
-     <sequence>
-      <element name="obtenerBoxesReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -171,6 +79,109 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="obtenerPacientesQueMasReservanReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerTodosLosPacientes">
+    <complexType/>
+   </element>
+   <element name="obtenerTodosLosPacientesResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerTodosLosPacientesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarHoraAPSPorMedico">
+    <complexType>
+     <sequence>
+      <element name="idMedico" type="xsd:int"/>
+      <element name="fechaIn" type="xsd:string"/>
+      <element name="fechaFin" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarHoraAPSPorMedicoResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarHoraAPSPorMedicoReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerTodosLosMedicos">
+    <complexType/>
+   </element>
+   <element name="obtenerTodosLosMedicosResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerTodosLosMedicosReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerEspecialidades">
+    <complexType/>
+   </element>
+   <element name="obtenerEspecialidadesResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerEspecialidadesReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarSusHorasMedicas">
+    <complexType>
+     <sequence>
+      <element name="idMedico" type="xsd:int"/>
+      <element name="fechaIn" type="xsd:string"/>
+      <element name="fechaFin" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="buscarSusHorasMedicasResponse">
+    <complexType>
+     <sequence>
+      <element name="buscarSusHorasMedicasReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reservarHoraAPS">
+    <complexType>
+     <sequence>
+      <element name="idHoraMedica" type="xsd:int"/>
+      <element name="idPaciente" type="xsd:int"/>
+      <element name="clave" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reservarHoraAPSResponse">
+    <complexType>
+     <sequence>
+      <element name="reservarHoraAPSReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reservarHoraControl">
+    <complexType>
+     <sequence>
+      <element name="idshorasMedicas" type="xsd:string"/>
+      <element name="idPaciente" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reservarHoraControlResponse">
+    <complexType>
+     <sequence>
+      <element name="reservarHoraControlReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerBoxes">
+    <complexType/>
+   </element>
+   <element name="obtenerBoxesResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerBoxesReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -237,17 +248,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="reservarHoraAPSResponse">
+   <wsdl:message name="obtenerPacientesQueMasReservanRequest">
 
-      <wsdl:part element="impl:reservarHoraAPSResponse" name="parameters">
+      <wsdl:part element="impl:obtenerPacientesQueMasReservan" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="obtenerPacientesQueMasReservanRequest">
+   <wsdl:message name="reservarHoraAPSResponse">
 
-      <wsdl:part element="impl:obtenerPacientesQueMasReservan" name="parameters">
+      <wsdl:part element="impl:reservarHoraAPSResponse" name="parameters">
 
       </wsdl:part>
 
@@ -301,9 +312,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="buscarHoraAPSPorMedicoRequest">
+   <wsdl:message name="obtenerTodosLosPacientesRequest">
 
-      <wsdl:part element="impl:buscarHoraAPSPorMedico" name="parameters">
+      <wsdl:part element="impl:obtenerTodosLosPacientes" name="parameters">
 
       </wsdl:part>
 
@@ -312,6 +323,22 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="obtenerPacientesQueMasReservanResponse">
 
       <wsdl:part element="impl:obtenerPacientesQueMasReservanResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="buscarHoraAPSPorMedicoRequest">
+
+      <wsdl:part element="impl:buscarHoraAPSPorMedico" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerTodosLosPacientesResponse">
+
+      <wsdl:part element="impl:obtenerTodosLosPacientesResponse" name="parameters">
 
       </wsdl:part>
 
@@ -389,14 +416,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="obtenerEspecialidadesRequest">
-
-      <wsdl:part element="impl:obtenerEspecialidades" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="obtenerTodosLosMedicosRequest">
 
       <wsdl:part element="impl:obtenerTodosLosMedicos" name="parameters">
@@ -405,9 +424,9 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="obtenerEspecialidadesResponse">
+   <wsdl:message name="obtenerEspecialidadesRequest">
 
-      <wsdl:part element="impl:obtenerEspecialidadesResponse" name="parameters">
+      <wsdl:part element="impl:obtenerEspecialidades" name="parameters">
 
       </wsdl:part>
 
@@ -429,43 +448,15 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="obtenerEspecialidadesResponse">
+
+      <wsdl:part element="impl:obtenerEspecialidadesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="SISREHMED_WS">
-
-      <wsdl:operation name="obtenerEspecialidades">
-
-         <wsdl:input message="impl:obtenerEspecialidadesRequest" name="obtenerEspecialidadesRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:obtenerEspecialidadesResponse" name="obtenerEspecialidadesResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="obtenerTodosLosMedicos">
-
-         <wsdl:input message="impl:obtenerTodosLosMedicosRequest" name="obtenerTodosLosMedicosRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:obtenerTodosLosMedicosResponse" name="obtenerTodosLosMedicosResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="buscarHoraAPSPorMedico">
-
-         <wsdl:input message="impl:buscarHoraAPSPorMedicoRequest" name="buscarHoraAPSPorMedicoRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:buscarHoraAPSPorMedicoResponse" name="buscarHoraAPSPorMedicoResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
 
       <wsdl:operation name="buscarHoraAPSPorEspecialidad">
 
@@ -474,54 +465,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:buscarHoraAPSPorEspecialidadResponse" name="buscarHoraAPSPorEspecialidadResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="buscarSusHorasMedicas">
-
-         <wsdl:input message="impl:buscarSusHorasMedicasRequest" name="buscarSusHorasMedicasRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:buscarSusHorasMedicasResponse" name="buscarSusHorasMedicasResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="reservarHoraAPS">
-
-         <wsdl:input message="impl:reservarHoraAPSRequest" name="reservarHoraAPSRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:reservarHoraAPSResponse" name="reservarHoraAPSResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="reservarHoraControl">
-
-         <wsdl:input message="impl:reservarHoraControlRequest" name="reservarHoraControlRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:reservarHoraControlResponse" name="reservarHoraControlResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="obtenerBoxes">
-
-         <wsdl:input message="impl:obtenerBoxesRequest" name="obtenerBoxesRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:obtenerBoxesResponse" name="obtenerBoxesResponse">
 
        </wsdl:output>
 
@@ -575,6 +518,102 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="obtenerTodosLosPacientes">
+
+         <wsdl:input message="impl:obtenerTodosLosPacientesRequest" name="obtenerTodosLosPacientesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerTodosLosPacientesResponse" name="obtenerTodosLosPacientesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarHoraAPSPorMedico">
+
+         <wsdl:input message="impl:buscarHoraAPSPorMedicoRequest" name="buscarHoraAPSPorMedicoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarHoraAPSPorMedicoResponse" name="buscarHoraAPSPorMedicoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTodosLosMedicos">
+
+         <wsdl:input message="impl:obtenerTodosLosMedicosRequest" name="obtenerTodosLosMedicosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerTodosLosMedicosResponse" name="obtenerTodosLosMedicosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEspecialidades">
+
+         <wsdl:input message="impl:obtenerEspecialidadesRequest" name="obtenerEspecialidadesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerEspecialidadesResponse" name="obtenerEspecialidadesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarSusHorasMedicas">
+
+         <wsdl:input message="impl:buscarSusHorasMedicasRequest" name="buscarSusHorasMedicasRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:buscarSusHorasMedicasResponse" name="buscarSusHorasMedicasResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="reservarHoraAPS">
+
+         <wsdl:input message="impl:reservarHoraAPSRequest" name="reservarHoraAPSRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:reservarHoraAPSResponse" name="reservarHoraAPSResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="reservarHoraControl">
+
+         <wsdl:input message="impl:reservarHoraControlRequest" name="reservarHoraControlRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:reservarHoraControlResponse" name="reservarHoraControlResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerBoxes">
+
+         <wsdl:input message="impl:obtenerBoxesRequest" name="obtenerBoxesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerBoxesResponse" name="obtenerBoxesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
       <wsdl:operation name="obtenerNombreDeMedico">
 
          <wsdl:input message="impl:obtenerNombreDeMedicoRequest" name="obtenerNombreDeMedicoRequest">
@@ -605,60 +644,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="obtenerEspecialidades">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="obtenerEspecialidadesRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="obtenerEspecialidadesResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="obtenerTodosLosMedicos">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="obtenerTodosLosMedicosRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="obtenerTodosLosMedicosResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="buscarHoraAPSPorMedico">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="buscarHoraAPSPorMedicoRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="buscarHoraAPSPorMedicoResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="buscarHoraAPSPorEspecialidad">
 
          <wsdlsoap:operation soapAction=""/>
@@ -670,78 +655,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="buscarHoraAPSPorEspecialidadResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="buscarSusHorasMedicas">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="buscarSusHorasMedicasRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="buscarSusHorasMedicasResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="reservarHoraAPS">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="reservarHoraAPSRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="reservarHoraAPSResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="reservarHoraControl">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="reservarHoraControlRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="reservarHoraControlResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="obtenerBoxes">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="obtenerBoxesRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="obtenerBoxesResponse">
 
             <wsdlsoap:body use="literal"/>
 
@@ -814,6 +727,150 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="obtenerPacientesQueMasReservanResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTodosLosPacientes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerTodosLosPacientesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerTodosLosPacientesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarHoraAPSPorMedico">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarHoraAPSPorMedicoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarHoraAPSPorMedicoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerTodosLosMedicos">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerTodosLosMedicosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerTodosLosMedicosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerEspecialidades">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerEspecialidadesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerEspecialidadesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="buscarSusHorasMedicas">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="buscarSusHorasMedicasRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="buscarSusHorasMedicasResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="reservarHoraAPS">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="reservarHoraAPSRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="reservarHoraAPSResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="reservarHoraControl">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="reservarHoraControlRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="reservarHoraControlResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="obtenerBoxes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerBoxesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerBoxesResponse">
 
             <wsdlsoap:body use="literal"/>
 
