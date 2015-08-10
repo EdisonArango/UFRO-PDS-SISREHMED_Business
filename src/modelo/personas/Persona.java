@@ -4,51 +4,54 @@ import org.orm.PersistentException;
 
 public class Persona {
 	private int id;
+	private String id_facebook;
 	private String nombre;
 	private String apellido;
+	private String rut;
+	private String direccion;
 	private String ciudad;
 	private String comuna;
-	private String direccion;
-	private int edad;
+	private String usuario;
 	private String email;
-	private String fecha_nacimiento;
-	private String login;
 	private String pass;
-	private String rut;
+	private String telefono;
+	private String fecha_nacimiento;
 	private int status;
+	
+	public Persona(int id, String id_facebook, String nombre, String apellido,
+				String rut, String direccion, String ciudad, String comuna,
+				String usuario, String email, String pass, String telefono,
+				String fecha_nacimiento, int status) {
+			this.id = id;
+			this.id_facebook = id_facebook;
+			this.nombre = nombre;
+			this.apellido = apellido;
+			this.rut = rut;
+			this.direccion = direccion;
+			this.ciudad = ciudad;
+			this.comuna = comuna;
+			this.usuario = usuario;
+			this.email = email;
+			this.pass = pass;
+			this.telefono = telefono;
+			this.fecha_nacimiento = fecha_nacimiento;
+			this.status = status;
+	}
 
-    public Persona(int id, String nombre, String apellido, String ciudad, String comuna, String direccion, int edad, String email, String fecha_nacimiento, String login, String pass, String rut, int status) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.ciudad = ciudad;
-        this.comuna = comuna;
-        this.direccion = direccion;
-        this.edad = edad;
-        this.email = email;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.login = login;
-        this.pass = pass;
-        this.rut = rut;
-        this.status = status;
-    }
         
     public static Persona personaORMAPersona(modelo.orm.Persona persona){
-    	int edad = -1,status = -1;
-    	if (persona.getEdad()!=null){
-    		edad = persona.getEdad();
-    	}
+    	int status = -1;
     	if (persona.getStatus()!=null){
     		status = persona.getStatus();
     	}
-    	return new Persona(persona.getId(), persona.getNombre(),
-    			persona.getApellido(), persona.getCiudad(), persona.getComuna(),
-    			persona.getDireccion(), edad, persona.getEmail(),
-    			persona.getFecha_nacimiento(), persona.getLogin(), persona.getPass(),
-    			persona.getRut(), status);
+    	return new Persona(persona.getId(), persona.getId_facebook(), persona.getNombre(),
+    			persona.getApellido(), persona.getRut(), persona.getDireccion(), 
+    			persona.getCiudad(), persona.getComuna(), persona.getUsuario(),
+    			 persona.getEmail(), persona.getPass(), persona.getTelefono(), 
+    			persona.getFecha_nacimiento(), status);
     }
     
-    public modelo.orm.Persona personaAORM() throws PersistentException{
+  public modelo.orm.Persona personaAORM() throws PersistentException{
 		return modelo.orm.PersonaDAO.loadPersonaByQuery("id="+id,null);
 	}
     
@@ -100,14 +103,6 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -122,14 +117,6 @@ public class Persona {
 
     public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getPass() {
@@ -155,6 +142,36 @@ public class Persona {
     public void setStatus(int status) {
         this.status = status;
     }
+
+
+	public String getId_facebook() {
+		return id_facebook;
+	}
+
+
+	public void setId_facebook(String id_facebook) {
+		this.id_facebook = id_facebook;
+	}
+
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
     
     
 }

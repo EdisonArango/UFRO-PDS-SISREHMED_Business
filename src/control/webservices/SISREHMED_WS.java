@@ -12,6 +12,7 @@ import modelo.personas.Paciente;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import control.servicios.Reporte;
 import control.servicios.Reserva;
@@ -307,7 +308,26 @@ public class SISREHMED_WS {
 		}
 	}
 	
-//	public String registrarPaciente (){
+	public String loginPacienteFacebook (String datos){
+		
+		try{
+			Object obj=JSONValue.parse(datos);
+			JSONObject paciente = (JSONObject)obj;
+			if (Paciente.noRegistradoFacebook(paciente.get("id").toString())){
+				return Paciente.crearPacienteFacebook(paciente.get("id").toString(), paciente.get("first_name").toString(),
+						paciente.get("last_name").toString(), paciente.get("email").toString());
+			}
+			else{
+				return Paciente.cargarPacienteFacebook(paciente.get("id").toString());
+			}
+		} catch (Exception e) {
+			JSONObject respuesta=new JSONObject();
+			respuesta.put("mensaje", "danger;Error!;Sucedió un error en el registro");
+			return respuesta.toJSONString();
+		}
+	}
+	
+//	public String login (String usuario,String contraseña){
 //		
 //	}
 //	

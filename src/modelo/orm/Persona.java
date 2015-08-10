@@ -28,6 +28,9 @@ public class Persona implements Serializable {
 	@org.hibernate.annotations.GenericGenerator(name="MODELO_ORM_PERSONA_ID_GENERATOR", strategy="increment")	
 	private int id;
 	
+	@Column(name="id_facebook", nullable=true, unique=true, length=255)	
+	private String id_facebook;
+	
 	@Column(name="nombre", nullable=true, length=100)	
 	private String nombre;
 	
@@ -36,9 +39,6 @@ public class Persona implements Serializable {
 	
 	@Column(name="rut", nullable=true, unique=true, length=20)	
 	private String rut;
-	
-	@Column(name="edad", nullable=true, length=3)	
-	private Integer edad;
 	
 	@Column(name="direccion", nullable=true, length=200)	
 	private String direccion;
@@ -49,20 +49,23 @@ public class Persona implements Serializable {
 	@Column(name="comuna", nullable=true, length=50)	
 	private String comuna;
 	
-	@Column(name="login", nullable=true, length=100)	
-	private String login;
+	@Column(name="usuario", nullable=true, unique=true, length=20)	
+	private String usuario;
+	
+	@Column(name="email", nullable=true, length=50)	
+	private String email;
 	
 	@Column(name="pass", nullable=true, length=32)	
 	private String pass;
 	
-	@Column(name="email", nullable=true, length=255)	
-	private String email;
-	
-	@Column(name="status", nullable=true, length=1)	
-	private Integer status;
+	@Column(name="telefono", nullable=true, length=30)	
+	private String telefono;
 	
 	@Column(name="fecha_nacimiento", nullable=true, length=10)	
 	private String fecha_nacimiento;
+	
+	@Column(name="status", nullable=true, length=1)	
+	private Integer status;
 	
 	private void setId(int value) {
 		this.id = value;
@@ -100,18 +103,6 @@ public class Persona implements Serializable {
 		return rut;
 	}
 	
-	public void setEdad(int value) {
-		setEdad(new Integer(value));
-	}
-	
-	public void setEdad(Integer value) {
-		this.edad = value;
-	}
-	
-	public Integer getEdad() {
-		return edad;
-	}
-	
 	public void setDireccion(String value) {
 		this.direccion = value;
 	}
@@ -134,14 +125,6 @@ public class Persona implements Serializable {
 	
 	public String getComuna() {
 		return comuna;
-	}
-	
-	public void setLogin(String value) {
-		this.login = value;
-	}
-	
-	public String getLogin() {
-		return login;
 	}
 	
 	public void setPass(String value) {
@@ -183,5 +166,30 @@ public class Persona implements Serializable {
 	public String toString() {
 		return String.valueOf(getId());
 	}
+
+	public String getId_facebook() {
+		return id_facebook;
+	}
+
+	public void setId_facebook(String id_facebook) {
+		this.id_facebook = id_facebook;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	
 	
 }

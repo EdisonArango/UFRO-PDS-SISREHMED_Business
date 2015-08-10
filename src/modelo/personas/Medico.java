@@ -8,18 +8,25 @@ import modelo.hospital.HoraMedica;
 import org.orm.PersistentException;
 
 public class Medico extends Persona {
-	private final int id;
+	private int id;
 	public Especialidad especialidad;
 	public HoraMedica horaMedica;
 
-        public Medico(int id, Especialidad especialidad, int idPersona, String nombre, String apellido, String ciudad, String comuna, String direccion, int edad, String email, String fecha_nacimiento, String login, String pass, String rut, int status) {
-            super(idPersona, nombre, apellido, ciudad, comuna, direccion, edad, email, fecha_nacimiento, login, pass, rut, status);
-            this.id = id;
-            this.especialidad = especialidad;
-        }
-        
-        
-        public boolean medicoLibreEnHora(String fecha,String hora) throws PersistentException {
+       
+    public Medico(int id, String id_facebook, String nombre, String apellido,
+			String rut, String direccion, String ciudad, String comuna,
+			String usuario, String email, String pass, String telefono,
+			String fecha_nacimiento, int status, int id2,
+			Especialidad especialidad) {
+    	
+		super(id, id_facebook, nombre, apellido, rut, direccion, ciudad,
+				comuna, usuario, email, pass, telefono, fecha_nacimiento,
+				status);
+		id = id2;
+		this.especialidad = especialidad;
+	}
+
+		public boolean medicoLibreEnHora(String fecha,String hora) throws PersistentException {
         	modelo.orm.Reserva[] reservas = modelo.orm.ReservaDAO.listReservaByQuery("horaMedica.medico.id="+id, null);
     		for (int i = 0; i < reservas.length; i++) {
     			if (reservas[i].getHoraMedica().getFecha().equals(fecha)&&reservas[i].getHoraMedica().getHora().equals(hora)) {
@@ -83,21 +90,17 @@ public class Medico extends Persona {
          */
         public static Medico medicoORMAMedico(modelo.orm.Medico medicoORM){
         	Especialidad specialidad = Especialidad.especialidadORMAEspecialidad(medicoORM.getEspecialidad());
-        	int edad = -1,status = -1;
-        	if (medicoORM.getPersona().getEdad()!=null){
-        		edad = medicoORM.getPersona().getEdad();
-        	}
+        	modelo.orm.Persona persona = medicoORM.getPersona();
+        	int status = -1;
         	if (medicoORM.getPersona().getStatus()!=null){
         		status = medicoORM.getPersona().getStatus();
         	}
-        	return new Medico(medicoORM.getId(),specialidad,medicoORM.getPersona().getId(),
-        			medicoORM.getPersona().getNombre(),medicoORM.getPersona().getApellido(),
-        			medicoORM.getPersona().getCiudad(),medicoORM.getPersona().getComuna(),
-        			medicoORM.getPersona().getDireccion(),
-        			edad,medicoORM.getPersona().getEmail(),
-        			medicoORM.getPersona().getFecha_nacimiento(),medicoORM.getPersona().getLogin(),
-        			medicoORM.getPersona().getPass(),medicoORM.getPersona().getRut(),
-        			status);
+        	return new Medico(persona.getId(), persona.getId_facebook(), persona.getNombre(),
+        			persona.getApellido(), persona.getRut(), persona.getDireccion(), 
+        			persona.getCiudad(), persona.getComuna(), persona.getUsuario(),
+        			 persona.getEmail(), persona.getPass(), persona.getTelefono(), 
+        			persona.getFecha_nacimiento(), status,
+        			medicoORM.getId(),specialidad);
         }
 
         @Override
