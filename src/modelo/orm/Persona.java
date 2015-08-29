@@ -64,8 +64,8 @@ public class Persona implements Serializable {
 	@Column(name="fecha_nacimiento", nullable=true, length=10)	
 	private String fecha_nacimiento;
 	
-	@Column(name="status", nullable=true, length=1)	
-	private Integer status;
+	@Column(name="admin", nullable=true, length=1)	
+	private Integer admin;
 	
 	private void setId(int value) {
 		this.id = value;
@@ -143,16 +143,16 @@ public class Persona implements Serializable {
 		return email;
 	}
 	
-	public void setStatus(int value) {
-		setStatus(new Integer(value));
+	public void setadmin(int value) {
+		setadmin(new Integer(value));
 	}
 	
-	public void setStatus(Integer value) {
-		this.status = value;
+	public void setAdmin(Integer value) {
+		this.admin = value;
 	}
 	
-	public Integer getStatus() {
-		return status;
+	public Integer getAdmin() {
+		return admin;
 	}
 	
 	public void setFecha_nacimiento(String value) {

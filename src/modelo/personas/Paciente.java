@@ -17,11 +17,11 @@ public class Paciente extends Persona {
 	public Paciente(int id, String id_facebook, String nombre, String apellido,
 			String rut, String direccion, String ciudad, String comuna,
 			String usuario, String email, String pass, String telefono,
-			String fecha_nacimiento, int status, int idPaciente) {
+			String fecha_nacimiento, int admin, int idPaciente) {
 		
 		super(id, id_facebook, nombre, apellido, rut, direccion, ciudad,
 				comuna, usuario, email, pass, telefono, fecha_nacimiento,
-				status);
+				admin);
 		this.id = idPaciente;
 	}
 
@@ -59,7 +59,7 @@ public class Paciente extends Persona {
 			personaNueva.setPass(pass);
 			personaNueva.setTelefono(telefono);
 			personaNueva.setFecha_nacimiento(fecha_nacimiento);
-			personaNueva.setStatus(1);
+			personaNueva.setAdmin(0);
 			modelo.orm.PersonaDAO.save(personaNueva);
 			
 			pacienteNuevo.setPersona(personaNueva);
@@ -80,7 +80,7 @@ public class Paciente extends Persona {
 			personaNueva.setNombre(nombre);
 			personaNueva.setApellido(apellido);
 			personaNueva.setEmail(email);
-			personaNueva.setStatus(1);
+			personaNueva.setAdmin(0);
 			modelo.orm.PersonaDAO.save(personaNueva);
 			
 			pacienteNuevo.setPersona(personaNueva);
@@ -160,8 +160,8 @@ public class Paciente extends Persona {
 	public static Paciente pacienteORMAPaciente(modelo.orm.Paciente pacienteORM){
 		modelo.orm.Persona persona = pacienteORM.getPersona();
 		int status = -1;
-		if (persona.getStatus()!=null){
-			status = persona.getStatus();
+		if (persona.getAdmin()!=null){
+			status = persona.getAdmin();
 		}
 		return new Paciente(persona.getId(), persona.getId_facebook(), persona.getNombre(),
     			persona.getApellido(), persona.getRut(), persona.getDireccion(), 

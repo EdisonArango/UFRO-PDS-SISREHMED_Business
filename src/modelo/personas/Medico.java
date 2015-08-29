@@ -91,15 +91,15 @@ public class Medico extends Persona {
         public static Medico medicoORMAMedico(modelo.orm.Medico medicoORM){
         	Especialidad specialidad = Especialidad.especialidadORMAEspecialidad(medicoORM.getEspecialidad());
         	modelo.orm.Persona persona = medicoORM.getPersona();
-        	int status = -1;
-        	if (medicoORM.getPersona().getStatus()!=null){
-        		status = medicoORM.getPersona().getStatus();
+        	int admin = -1;
+        	if (medicoORM.getPersona().getAdmin()!=null){
+        		admin = medicoORM.getPersona().getAdmin();
         	}
         	return new Medico(persona.getId(), persona.getId_facebook(), persona.getNombre(),
         			persona.getApellido(), persona.getRut(), persona.getDireccion(), 
         			persona.getCiudad(), persona.getComuna(), persona.getUsuario(),
         			 persona.getEmail(), persona.getPass(), persona.getTelefono(), 
-        			persona.getFecha_nacimiento(), status,
+        			persona.getFecha_nacimiento(), admin,
         			medicoORM.getId(),specialidad);
         }
 

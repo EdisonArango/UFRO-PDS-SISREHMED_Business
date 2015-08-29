@@ -16,12 +16,12 @@ public class Persona {
 	private String pass;
 	private String telefono;
 	private String fecha_nacimiento;
-	private int status;
+	private int admin;
 	
 	public Persona(int id, String id_facebook, String nombre, String apellido,
 				String rut, String direccion, String ciudad, String comuna,
 				String usuario, String email, String pass, String telefono,
-				String fecha_nacimiento, int status) {
+				String fecha_nacimiento, int admin) {
 			this.id = id;
 			this.id_facebook = id_facebook;
 			this.nombre = nombre;
@@ -35,20 +35,20 @@ public class Persona {
 			this.pass = pass;
 			this.telefono = telefono;
 			this.fecha_nacimiento = fecha_nacimiento;
-			this.status = status;
+			this.admin = admin;
 	}
 
         
     public static Persona personaORMAPersona(modelo.orm.Persona persona){
-    	int status = -1;
-    	if (persona.getStatus()!=null){
-    		status = persona.getStatus();
+    	int admin = -1;
+    	if (persona.getAdmin()!=null){
+    		admin = persona.getAdmin();
     	}
     	return new Persona(persona.getId(), persona.getId_facebook(), persona.getNombre(),
     			persona.getApellido(), persona.getRut(), persona.getDireccion(), 
     			persona.getCiudad(), persona.getComuna(), persona.getUsuario(),
     			 persona.getEmail(), persona.getPass(), persona.getTelefono(), 
-    			persona.getFecha_nacimiento(), status);
+    			persona.getFecha_nacimiento(), admin);
     }
     
   public modelo.orm.Persona personaAORM() throws PersistentException{
@@ -135,12 +135,12 @@ public class Persona {
         this.rut = rut;
     }
 
-    public int getStatus() {
-        return status;
+    public int getAdmin() {
+        return admin;
     }
 
     public void setStatus(int status) {
-        this.status = status;
+        this.admin = admin;
     }
 
 

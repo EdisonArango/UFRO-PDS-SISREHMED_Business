@@ -170,7 +170,7 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="status">
+    <Column name="admin">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>

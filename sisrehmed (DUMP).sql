@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `Persona` (
   `pass` varchar(255) DEFAULT NULL,
   `telefono` varchar(30) DEFAULT NULL,
   `fecha_nacimiento` varchar(10) DEFAULT NULL,
-  `status` int(1) DEFAULT NULL
+  `admin` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
