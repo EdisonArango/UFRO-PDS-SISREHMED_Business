@@ -1,11 +1,15 @@
 package modelo.hospital;
 
-import control.util.Utilidades;
 import java.util.ArrayList;
-import modelo.personas.Paciente;
+
 import modelo.personas.Medico;
+import modelo.personas.Paciente;
 import modelo.personas.Persona;
+
+import org.json.simple.JSONObject;
 import org.orm.PersistentException;
+
+import control.util.Utilidades;
 
 public class HoraMedica {
 	private int id;
@@ -28,6 +32,25 @@ public class HoraMedica {
 		this.medico = medico;
 		this.box = box;
 		this.personaQueRegistra = personaQueRegistra;
+	}
+	
+	public static String crearCupo (String fecha, String hora, String aps, String idMedico, String idBox){
+		JSONObject respuesta = new JSONObject();
+		try {
+		modelo.orm.HoraMedica nuevaHora = modelo.orm.HoraMedicaDAO.createHoraMedica();
+		nuevaHora.setFecha(fecha);
+		nuevaHora.setHora(hora);
+		nuevaHora.setEsAPS(Integer.valueOf(aps));
+		nuevaHora.setMedico(modelo.orm.MedicoDAO.loadMedicoByQuery("id="+idMedico, null));
+		nuevaHora.setBox(modelo.orm.BoxDAO.loadBoxByQuery("id="+idBox, null));
+		modelo.orm.HoraMedicaDAO.save(nuevaHora);
+		
+		respuesta.put("mensaje", "success;Cupo creado!;Se ha creado el cupo correctamente");
+		return respuesta.toJSONString();
+		} catch (PersistentException e){
+			respuesta.put("mensaje", "danger;Error!;Ha ocurrido un error, por favor intentelo de nuevo más tarde");
+			return respuesta.toJSONString();
+		}
 	}
     
 	public static HoraMedica cargarHoraMedicaPorId(int id) throws PersistentException{

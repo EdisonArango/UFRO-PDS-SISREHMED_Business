@@ -7,12 +7,15 @@ import java.util.LinkedHashMap;
 import modelo.hospital.Box;
 import modelo.hospital.Especialidad;
 import modelo.hospital.HoraMedica;
+import modelo.personas.Director;
 import modelo.personas.Medico;
 import modelo.personas.Paciente;
+import modelo.personas.Persona;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.orm.PersistentException;
 
 import control.servicios.Reporte;
 import control.servicios.Reserva;
@@ -171,10 +174,10 @@ public class SISREHMED_WS {
 		return joResult.toJSONString();
 	}
 	
-	public String reservarHoraAPS (int idHoraMedica,int idPaciente,String clave){
+	public String reservarHoraAPS (int idHoraMedica,int idPaciente){
 		String respuesta;
 		try {
-			respuesta = Reserva.reservarHoraAPS(idHoraMedica, idPaciente,clave);
+			respuesta = Reserva.reservarHoraAPS(idHoraMedica, idPaciente);
 			return respuesta;
 		} catch (Exception e) {
 			return "Error";
@@ -327,14 +330,52 @@ public class SISREHMED_WS {
 		}
 	}
 	
-//	public String login (String usuario,String contraseña){
-//		
-//	}
-//	
-//	public String crearCupo (){
-//		
-//	}
-//	
+	public String login (String usuario,String pass){
+		try {
+			JSONObject respuesta=new JSONObject();
+			if(Persona.usuarioExiste(usuario)){
+				if(Paciente.existe(usuario,pass)){
+					respuesta = Paciente.login(usuario, pass);
+					respuesta.put("rol", "paciente");
+					respuesta.put("mensaje", "success;Login exitoso!; ");
+				}
+				else if(Medico.existe(usuario,pass)){
+					respuesta = Medico.login(usuario, pass);
+					respuesta.put("rol", "medico");
+					respuesta.put("mensaje", "success;Login exitoso!; ");
+				}
+				else if(Director.existe(usuario,pass)){
+					respuesta = Director.login(usuario, pass);
+					respuesta.put("rol", "director");
+					respuesta.put("mensaje", "success;Login exitoso!; ");
+				}
+				else if (Persona.existe(usuario,pass)){
+					respuesta = Persona.login(usuario, pass);
+					respuesta.put("rol", "administrador");
+					respuesta.put("mensaje", "success;Login exitoso!; ");
+				}
+				else{
+					respuesta.put("mensaje", "danger;Contraseña incorrecta!;La contraseña ingresada es incorrecta");
+				}
+				return respuesta.toJSONString();
+			}
+			else{
+				System.out.println("Usuario no existe");
+				respuesta.put("mensaje", "danger;Error!;Usuario no registrado");
+				return respuesta.toJSONString();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			JSONObject respuesta=new JSONObject();
+			respuesta.put("mensaje", "danger;Error!;Hubo un problema en el login, por favor, intente de nuevo");
+			return respuesta.toJSONString();
+		}
+	}
+	
+	public String crearCupo (String fecha, String hora, String aps, String idMedico, String idBox){
+		return HoraMedica.crearCupo(fecha, hora, aps, idMedico, idBox);
+	}
+	
 //	public String eliminarCupo (){
 //		
 //	}

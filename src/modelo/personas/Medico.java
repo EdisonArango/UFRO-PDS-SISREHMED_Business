@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import modelo.hospital.Especialidad;
 import modelo.hospital.HoraMedica;
 
+import org.json.simple.JSONObject;
 import org.orm.PersistentException;
 
 public class Medico extends Persona {
@@ -22,7 +23,7 @@ public class Medico extends Persona {
 		super(id, id_facebook, nombre, apellido, rut, direccion, ciudad,
 				comuna, usuario, email, pass, telefono, fecha_nacimiento,
 				status);
-		id = id2;
+		this.id = id2;
 		this.especialidad = especialidad;
 	}
 
@@ -82,6 +83,19 @@ public class Medico extends Persona {
             }
             return medicos;
         }
+        
+        public static boolean existe (String usuario, String pass) throws PersistentException{
+    		modelo.orm.Medico medico = modelo.orm.MedicoDAO.loadMedicoByQuery("(persona.usuario = '"+usuario+"' or persona.email = '"+usuario+"') and persona.pass = '"+pass+"'", null);
+    		return medico != null;
+    	}
+        
+        public static JSONObject login (String usuario, String pass) throws PersistentException{
+    		Medico medico = medicoORMAMedico(modelo.orm.MedicoDAO.loadMedicoByQuery("(persona.usuario = '"+usuario+"' or persona.email = '"+usuario+"') and persona.pass = '"+pass+"'", null));
+    		JSONObject respuesta = new JSONObject();
+    		respuesta.put("id", medico.getId());
+    		respuesta.put("nombre", medico.getNombre()+" "+medico.getApellido());
+    		return respuesta;
+    	}
         
         /**
          * Error, validar que atributos pueden ser nulos

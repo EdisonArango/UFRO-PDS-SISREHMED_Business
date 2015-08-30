@@ -115,6 +115,19 @@ public class Paciente extends Persona {
 		return paciente==null;
 	}
 	
+	public static boolean existe (String usuario, String pass) throws PersistentException{
+		modelo.orm.Paciente paciente = modelo.orm.PacienteDAO.loadPacienteByQuery("(persona.usuario = '"+usuario+"' or persona.email = '"+usuario+"') and persona.pass = '"+pass+"'", null);
+		return paciente != null;
+	}
+	
+	public static JSONObject login (String usuario, String pass) throws PersistentException{
+		Paciente paciente = pacienteORMAPaciente(modelo.orm.PacienteDAO.loadPacienteByQuery("(persona.usuario = '"+usuario+"' or persona.email = '"+usuario+"') and persona.pass = '"+pass+"'", null));
+		JSONObject respuesta = new JSONObject();
+		respuesta.put("id", paciente.getId());
+		respuesta.put("nombre", paciente.getNombre()+" "+paciente.getApellido());
+		return respuesta;
+	}
+	
 	public boolean libreEnHora (String fecha,String hora) throws PersistentException{
 		modelo.orm.Reserva[] reservas = modelo.orm.ReservaDAO.listReservaByQuery("idPaciente="+id, null);
 		for (int i = 0; i < reservas.length; i++) {

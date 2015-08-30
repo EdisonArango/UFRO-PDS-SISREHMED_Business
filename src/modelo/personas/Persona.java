@@ -1,5 +1,6 @@
 package modelo.personas;
 
+import org.json.simple.JSONObject;
 import org.orm.PersistentException;
 
 public class Persona {
@@ -51,7 +52,7 @@ public class Persona {
     			persona.getFecha_nacimiento(), admin);
     }
     
-  public modelo.orm.Persona personaAORM() throws PersistentException{
+    public modelo.orm.Persona personaAORM() throws PersistentException{
 		return modelo.orm.PersonaDAO.loadPersonaByQuery("id="+id,null);
 	}
     
@@ -172,6 +173,23 @@ public class Persona {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-    
-    
+	
+	public static boolean usuarioExiste(String usuario) throws PersistentException{
+		modelo.orm.Persona persona = modelo.orm.PersonaDAO.loadPersonaByQuery("usuario = '"+usuario+"' or email = '"+usuario+"'", null);
+		return persona != null;
+	}
+	
+	public static boolean existe (String usuario, String pass) throws PersistentException{
+		modelo.orm.Persona persona = modelo.orm.PersonaDAO.loadPersonaByQuery("(usuario = '"+usuario+"' or email = '"+usuario+"') and pass = '"+pass+"' and admin=1", null);
+		return persona != null;
+	}
+	
+	public static JSONObject login (String usuario, String pass) throws PersistentException{
+		Persona persona = personaORMAPersona(modelo.orm.PersonaDAO.loadPersonaByQuery("(usuario = '"+usuario+"' or email = '"+usuario+"') and pass = '"+pass+"'", null));
+		JSONObject respuesta = new JSONObject();
+		respuesta.put("id", persona.getId());
+		respuesta.put("nombre", persona.getNombre()+" "+persona.getApellido());
+		return respuesta;
+	}
+        
 }

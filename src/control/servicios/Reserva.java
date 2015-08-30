@@ -11,11 +11,8 @@ import org.orm.PersistentException;
 
 public class Reserva {
 
-	public static String reservarHoraAPS(int idHoraMedica, int idPaciente,String clave) throws PersistentException {
+	public static String reservarHoraAPS(int idHoraMedica, int idPaciente) throws PersistentException {
 		Paciente paciente = Paciente.cargarPacientePorId(idPaciente);
-		if(!paciente.getPass().equals(clave)){
-			return "Clave incorrecta";
-		}
 		HoraMedica horaMedica = HoraMedica.cargarHoraMedicaPorId(idHoraMedica);
 		if (!horaMedica.horaEsAPS()){
 			return "Hora no es APS";
@@ -23,9 +20,6 @@ public class Reserva {
 		if (horaMedica.horaReservada()){
 			if (horaMedica.paciente.getId()==idPaciente){
 				return "Paciente ya ha reservado la hora";
-			}
-			else{
-				return "La hora ya esta reservada";
 			}
 		}
 		if (!paciente.libreEnHora(horaMedica.getFecha(), horaMedica.getHora())){
@@ -68,7 +62,12 @@ public class Reserva {
 		Medico medico = Medico.cargarMedicoPorId(idMedico);
 		return medico.obtenerHorasLibres(fechaIn, fechaFin);
 	}
-        
+     
+	//Implementar
+	public static ArrayList<HoraMedica> obtenerTodasLasHorasAPSDeMedico(int idMedico, String fechaIn, String fechaFin) throws PersistentException {
+		Medico medico = Medico.cargarMedicoPorId(idMedico);
+		return medico.obtenerHorasLibres(fechaIn, fechaFin);
+	}
 
 	public static ArrayList<HoraMedica> buscarHorasAPSPorEspecialidad(int idEspecialidad, String fechaIn, String fechaFin) throws PersistentException {
 		Especialidad especialidad = Especialidad.cargarEspecialidadPorId(idEspecialidad);
